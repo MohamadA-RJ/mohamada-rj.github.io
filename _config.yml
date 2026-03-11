@@ -13,7 +13,7 @@ title                    : "Homepage" # Update this with your name or the name o
 title_separator          : "-"
 name                     : &name "Mohamad A. Raja"
 description              : &description "Mohamad A. Raja's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
-url                      : https://mohamada-rj.github.io/Personal_Website/ # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
+url                      : https://www.mohamadraja.com # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "/mohamada-rj/Personal_Website.github.io" # the repository of your site, e.g. "/[your GitHub username]/[your repo name]"
