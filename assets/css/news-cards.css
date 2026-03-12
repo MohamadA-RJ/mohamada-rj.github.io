@@ -7,7 +7,7 @@
   position: relative;
 }
 
-/* Fade edges */
+/* Fade edges — disabled, uncomment to re-enable
 .latest-news-container::before,
 .latest-news-container::after {
   content: '';
@@ -26,6 +26,7 @@
   right: 0;
   background: linear-gradient(to left, var(--global-bg-color, #fff), transparent);
 }
+*/
 
 @keyframes news-scroll {
   0%   { transform: translateX(0); }
