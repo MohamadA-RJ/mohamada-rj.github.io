@@ -151,15 +151,18 @@
     display: block;
     width: auto;
     height: auto;
+    text-align: center;
   }
 
   img {
-    max-width: 175px;
+    max-width: 260px;
     border-radius: 50%;
 
     @include breakpoint($large) {
       padding: 5px;
       border: 1px solid var(--global-border-color);
+      display: block;
+      margin: 0 auto;
     }
   }
 }
@@ -176,6 +179,7 @@
     width: 100%;
     padding-left: 0;
     padding-right: 0;
+    text-align: center;
   }
 }
 
@@ -183,13 +187,16 @@
   margin: 0;
 
   @include breakpoint($large) {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-size: 1.25em;
+    font-weight: 700;
+    letter-spacing: 0.01em;
   }
 }
 .sidebar .author__name {
-  font-family: $sans-serif;
-  font-size: $type-size-5;
+  font-family: 'Lato', $sans-serif;
+  font-size: $type-size-4;
 }
 
 .sidebar .author__desktop {
@@ -210,10 +217,25 @@
 
 .author__bio {
   margin: 0;
+  font-family: 'Lato', $sans-serif;
+  font-size: 0.85em;
+  color: #555;
 
   @include breakpoint($large) {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+.author__affiliation {
+  margin: 0;
+  font-family: 'Lato', $sans-serif;
+  font-size: 0.8em;
+  color: #555;
+
+  @include breakpoint($large) {
+    margin-top: 2px;
+    margin-bottom: 12px;
   }
 }
 
@@ -234,6 +256,7 @@
 
   @include breakpoint($large) {
     display: block;
+    text-align: center;
   }
 
   button {
@@ -260,13 +283,59 @@
   cursor: default;
 
   @include breakpoint($large) {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
     position: relative;
     margin: 0;
     padding: 0;
     border: 0;
     background: transparent;
     box-shadow: none;
+
+    // Info items (location, employer) span full width — hidden on desktop
+    li.author__desktop {
+      flex-basis: 100%;
+      width: 100%;
+      text-align: center;
+    }
+
+    li.author__info-hidden {
+      display: none;
+    }
+
+    // Social platform links become icon-only circles
+    li:not(.author__desktop) {
+      flex: 0 0 auto;
+
+      a {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #e8e9ea;
+        color: #444;
+        padding: 0;
+        margin-bottom: 0;
+        font-size: 0; // hides text nodes
+
+        i {
+          font-size: 1.1rem;
+          margin: 0;
+          padding: 0;
+        }
+
+        &:hover {
+          background: #444;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
   }
 
   &:before {

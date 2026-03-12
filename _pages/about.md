@@ -11,11 +11,10 @@ I'm a PhD candidate in <span style="color: #0066cc;">Aerospace Structures and Ma
 </div> -->
 
 <div style="text-align: justify;">
-I'm a PhD candidate in <a href="https://www.tudelft.nl/en/ae/organisation/departments/aerospace-structures-and-materials" style="color: #f85151; text-decoration: none; font-weight: bold;">Aerospace Structures and Materials (ASM)</a> department at <a href="https://www.tudelft.nl/en/" style="color: inherit; text-decoration: none; font-weight: bold;">T<span style="color: #00A6D6;">U</span> Delft's</a> Faculty of Aerospace Engineering. 
-My research focuses on composite materials, machine learning, functional materials, multifunctional structures, and computational micromechanics.
+I'm a PhD candidate in the <a href="https://www.tudelft.nl/en/ae/organisation/departments/aerospace-structures-and-materials" style="color: #f85151; text-decoration: none; font-weight: bold;">Aerospace Structures and Materials (ASM)</a> department at <a href="https://www.tudelft.nl/en/" style="color: inherit; text-decoration: none; font-weight: bold;">T<span style="color: #00A6D6;">U</span> Delft</a>, Faculty of Aerospace Engineering. My research lies at the intersection of deep learning and computational micromechanics, with a focus on the design and analysis of large-scale aerospace-grade composite structures.
 <br>
 <br>
-My current work focusses on the intersection of deep-learning and computational micromechanics for the design of large aerospace-grade structures. Prior to this, I have been working on multifunctional carbon fiber-based structural batteries.
+Prior to joining TU Delft, I worked as a researcher in the <a href="http://mdam.kaist.ac.kr/" style="color: #003DA5; text-decoration: none; font-weight: bold;">Mechanical Design and Advanced Materials (MDAM)</a> lab at <a href="https://me.kaist.ac.kr/eng/main/main.html" style="color: inherit; text-decoration: none; font-weight: bold;"><span style="color: #003DA5;">KAIST</span></a>, where I focused on multifunctional carbon fiber-based structural batteries.
 </div>
 
 <br>

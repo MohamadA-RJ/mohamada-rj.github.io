@@ -26,7 +26,7 @@ author:
   avatar           : "MyPersonalPic_closeup.jpg"
   name             : "Mohamad A. Raja"
   pronouns         : # example: "she/her"  
-  bio              : "PhD Candidate in Machine Learning and Mechanics of Materials"
+  bio              : "PhD Candidate in Aerospace Structures and Materials"
   location         : "Delft, The Netherlands"
   employer         : "Delft University of Technology"
   uri              : # None
@@ -67,6 +67,7 @@ author:
   instagram        : # Username
   lastfm           : # Username
   linkedin         : "mohamad-a-raja-799a30343/"
+  cv               : "/files/CV_Last%20updated%20on%2019.10.2024.pdf"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
