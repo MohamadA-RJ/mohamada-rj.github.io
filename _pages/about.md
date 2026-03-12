@@ -22,7 +22,7 @@ Prior to joining TU Delft, I worked as a MS researcher in the <a href="http://md
 # Latest News
 ------
 <div class="latest-news-container">
-  <div class="news-scroll-wrapper">
+  <div class="news-scroll-wrapper" id="newsScroller">
     {% assign sorted_news = site.news | sort: 'date' | reverse %}
     {% for news_item in sorted_news limit:10 %}
       <div class="news-card">
@@ -43,6 +43,18 @@ Prior to joining TU Delft, I worked as a MS researcher in the <a href="http://md
     {% endfor %}
   </div>
 </div>
+
+<script>
+  (function() {
+    var scroller = document.getElementById('newsScroller');
+    if (!scroller) return;
+    // Clone all cards and append so the loop is seamless
+    var cards = Array.from(scroller.children);
+    cards.forEach(function(card) {
+      scroller.appendChild(card.cloneNode(true));
+    });
+  })();
+</script>
 
 
 

@@ -3,34 +3,47 @@
   margin-top: 0rem;
   margin-bottom: 0rem;
   padding: 0;
+  overflow: hidden;        /* clip the scrolling track */
+  position: relative;
+}
+
+/* Fade edges */
+.latest-news-container::before,
+.latest-news-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.latest-news-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--global-bg-color, #fff), transparent);
+}
+.latest-news-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--global-bg-color, #fff), transparent);
+}
+
+@keyframes news-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }  /* move exactly one copy-width */
 }
 
 .news-scroll-wrapper {
   display: flex;
   gap: 1.5rem;
-  overflow-x: auto;
   padding: 1rem 0;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
   margin-bottom: 1rem;
+  width: max-content;            /* shrink-wraps all cards */
+  animation: news-scroll 25s linear infinite;
 }
 
-/* Hide scrollbar for cleaner look but keep functionality */
-.news-scroll-wrapper::-webkit-scrollbar {
-  height: 8px;
-}
-
-.news-scroll-wrapper::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.news-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
-}
-
-.news-scroll-wrapper::-webkit-scrollbar-thumb:hover {
-  background: #999;
+/* Pause on hover over any card or the wrapper itself */
+.latest-news-container:hover .news-scroll-wrapper {
+  animation-play-state: paused;
 }
 
 .news-card {
