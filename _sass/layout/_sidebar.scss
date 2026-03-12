@@ -219,7 +219,7 @@
   margin: 0;
   font-family: 'Lato', $sans-serif;
   font-size: 0.85em;
-  color: #555;
+  color: var(--global-text-color-light);
 
   @include breakpoint($large) {
     margin-top: 4px;
@@ -231,7 +231,8 @@
   margin: 0;
   font-family: 'Lato', $sans-serif;
   font-size: 0.8em;
-  color: #555;
+  color: var(--global-text-color);
+  font-weight: 600;
 
   @include breakpoint($large) {
     margin-top: 2px;
@@ -284,8 +285,8 @@
 
   @include breakpoint($large) {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    flex-wrap: nowrap;
+    gap: 4px;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -314,24 +315,24 @@
         display: inline-flex !important;
         align-items: center;
         justify-content: center;
-        width: 42px;
-        height: 42px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
-        background: #e8e9ea;
-        color: #444;
+        background: rgba(128, 128, 128, 0.15);
+        color: var(--global-text-color);
         padding: 0;
         margin-bottom: 0;
         font-size: 0; // hides text nodes
 
         i {
-          font-size: 1.1rem;
+          font-size: 0.9rem;
           margin: 0;
           padding: 0;
         }
 
         &:hover {
-          background: #444;
-          color: #fff;
+          background: var(--global-text-color);
+          color: var(--global-bg-color);
           text-decoration: none;
         }
       }
