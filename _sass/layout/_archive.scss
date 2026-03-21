@@ -125,6 +125,51 @@
   font-size: 0.9em;
 }
 
+.pub-section-nav-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6em;
+  margin: 1em 0 1.8em;
+}
+
+.pub-section-nav-label {
+  font-size: $type-size-4;
+  font-weight: bold;
+  // font-style: italic;
+  text-decoration: underline;
+  font-family: $sans-serif-narrow;
+  color: var(--global-text-color, #333);
+  white-space: nowrap;
+}
+
+.pub-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.pub-section-pill {
+  display: inline-block;
+  padding: 0.35em 1em;
+  border-radius: 2em;
+  border: 2px solid var(--global-link-color, #52adc8);
+  font-size: $type-size-5;
+  font-weight: bold;
+  font-family: $sans-serif-narrow;
+  color: var(--global-link-color, #52adc8);
+  text-decoration: none !important;
+  line-height: 1.6;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: var(--global-link-color, #52adc8);
+    color: #fff !important;
+    border-color: var(--global-link-color, #52adc8);
+    text-decoration: none !important;
+  }
+}
+
 
 /*
    Grid view
