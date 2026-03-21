@@ -15,6 +15,8 @@ author_profile: false
 {% if site.publication_category %}
   {% for category in site.publication_category  %}
     {% assign title_shown = false %}
+    {% assign cat_posts = site.publications | where: "category", category[0] %}
+    {% assign pub_counter = cat_posts | size %}
     {% for post in site.publications reversed %}
       {% if post.category != category[0] %}
         {% continue %}
@@ -23,7 +25,8 @@ author_profile: false
         <h2>{{ category[1].title }}</h2><hr />
         {% assign title_shown = true %}
       {% endunless %}
-      {% include archive-single.html %}
+      {% include archive-single.html pub_number=pub_counter %}
+      {% assign pub_counter = pub_counter | minus: 1 %}
     {% endfor %}
   {% endfor %}
 {% else %}

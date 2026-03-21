@@ -105,6 +105,24 @@
   .page__meta {
     margin: 0 0 4px;
   }
+
+  .archive__item {
+    p {
+      margin-top: 0.1em;
+      margin-bottom: 0.25em;
+    }
+
+    .archive__item-excerpt {
+      margin-top: 0;
+      margin-bottom: 0.25em;
+    }
+  }
+}
+
+.pub-number {
+  font-weight: normal;
+  color: var(--global-text-color-light, #555);
+  font-size: 0.9em;
 }
 
 
