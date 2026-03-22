@@ -1,0 +1,44 @@
+{% include base_path %}
+
+<div class="resource-card">
+  <div class="resource-card__body">
+    <h3 class="resource-card__title">{{ resource.title }}</h3>
+
+    {% if resource.excerpt %}
+      <p class="resource-card__excerpt">{{ resource.excerpt }}</p>
+    {% endif %}
+
+    {% if resource.software %}
+      <p class="resource-card__software">
+        <strong>Software:</strong>
+        <span class="resource-software-badge">{{ resource.software }}</span>
+      </p>
+    {% endif %}
+
+    {% if resource.citation %}
+      <div class="resource-card__citation">
+        <strong>Code Reference/Citation:</strong><br />
+        <span>{{ resource.citation }}</span>
+      </div>
+    {% endif %}
+
+    <div class="resource-card__links">
+      {% if resource.dataurl %}
+        <a href="{{ resource.dataurl }}" class="resource-btn" target="_blank" rel="noopener">
+          <i class="fa fa-database" aria-hidden="true"></i> Research Repository
+        </a>
+      {% endif %}
+      {% if resource.githuburl %}
+        <a href="{{ resource.githuburl }}" class="resource-btn" target="_blank" rel="noopener">
+          <i class="fab fa-github" aria-hidden="true"></i> GitHub
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if resource.image %}
+    <div class="resource-card__image">
+      <img src="{{ resource.image }}" alt="{{ resource.title }}" loading="lazy" />
+    </div>
+  {% endif %}
+</div>

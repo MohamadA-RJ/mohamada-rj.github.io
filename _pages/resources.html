@@ -1,0 +1,19 @@
+---
+layout: archive
+title: "Open-Access Resources"
+permalink: /resources/
+author_profile: false
+---
+
+<div class="wordwrap">
+Openly shared code and datasets accompanying published research. All repositories are freely available for use with proper citation.
+</div>
+
+{% include base_path %}
+
+<div class="resources-list">
+  {% assign sorted_resources = site.resources | sort: "date" | reverse %}
+  {% for resource in sorted_resources %}
+    {% include resource-card.html %}
+  {% endfor %}
+</div>
