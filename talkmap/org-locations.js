@@ -10,8 +10,8 @@ var addressPoints = [
     126.5482545
   ],
   [
-    "Tutorial 1 on Relevant Topic in Your Field<br />UC-Berkeley Institute for Testing Science; Berkeley, CA, USA",
-    37.8708393,
-    -122.272863
+    "Poster at NXTGEN Innovation Days, Inauguration & Symposium Delft TapeLab \u2013 open research facility for unidirectional thermoplastic composites. Great Event.<br />Faculty of Aerospace Engineering & SAMXL; TU Delft, NL",
+    51.9988274,
+    4.3739604
   ]
 ];
