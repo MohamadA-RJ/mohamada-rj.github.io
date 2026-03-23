@@ -1,0 +1,89 @@
+{% include base_path %}
+
+{% comment %}Reset project_images each render to prevent bleed between cards{% endcomment %}
+{% assign project_images = nil %}
+{% if post.images %}
+  {% assign project_images = post.images %}
+{% elsif post.image and post.image != '' %}
+  {% assign project_images = post.image | split: '||' %}
+{% endif %}
+
+{% assign proj_id = post.url | slugify %}
+
+<div class="project-card">
+  <div class="project-card__body">
+
+    <div class="project-card__meta-row">
+      {% if post.type %}
+        <span class="project-type-badge">{{ post.type }}</span>
+      {% endif %}
+      {% if post.date %}
+        <span class="project-card__date">{{ post.date | date: "%Y" }}</span>
+      {% endif %}
+    </div>
+
+    <h3 class="project-card__title">{{ post.title }}</h3>
+
+    {% if post.tools %}
+      <p class="project-card__tools">
+        <strong>Tools:</strong>
+        {% for tool in post.tools %}
+          <span class="project-tool-badge">{{ tool }}</span>
+        {% endfor %}
+      </p>
+    {% endif %}
+
+    {% if post.excerpt %}
+      <p class="project-card__excerpt">{{ post.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+    {% endif %}
+
+    {% if post.moreurl %}
+      <div class="project-card__links">
+        <a href="{% if post.moreurl contains '://' %}{{ post.moreurl }}{% else %}{{ post.moreurl | prepend: '/' | replace: '//', '/' | prepend: base_path }}{% endif %}" class="resource-btn" target="_blank" rel="noopener">
+          <i class="fa fa-external-link-alt" aria-hidden="true"></i> More Info
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {% if project_images and project_images.size > 0 %}
+    <div class="project-card__image">
+      {% if project_images.size == 1 %}
+        {% assign img = project_images[0] %}
+        <img src="{% if img contains '://' %}{{ img }}{% else %}{{ img | prepend: '/' | replace: '//', '/' | prepend: base_path }}{% endif %}" alt="{{ post.title }}" loading="lazy" />
+      {% else %}
+        <div class="talk-slideshow" id="proj-slideshow-{{ proj_id }}">
+          {% for img in project_images %}
+            <img src="{% if img contains '://' %}{{ img }}{% else %}{{ img | prepend: '/' | replace: '//', '/' | prepend: base_path }}{% endif %}" alt="{{ post.title }} – photo {{ forloop.index }}" loading="lazy" class="talk-slide{% if forloop.first %} active{% endif %}" />
+          {% endfor %}
+          <button class="talk-slideshow__arrow talk-slideshow__arrow--prev" aria-label="Previous">&#8249;</button>
+          <button class="talk-slideshow__arrow talk-slideshow__arrow--next" aria-label="Next">&#8250;</button>
+          <div class="talk-slideshow__dots">
+            {% for img in project_images %}
+              <span class="talk-slideshow__dot{% if forloop.first %} active{% endif %}"></span>
+            {% endfor %}
+          </div>
+        </div>
+        <script>
+        (function() {
+          var el = document.getElementById('proj-slideshow-{{ proj_id }}');
+          if (!el) return;
+          var slides = el.querySelectorAll('.talk-slide');
+          var dots = el.querySelectorAll('.talk-slideshow__dot');
+          var current = 0;
+          function goTo(n) {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = (n + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+          }
+          el.querySelector('.talk-slideshow__arrow--prev').addEventListener('click', function() { goTo(current - 1); });
+          el.querySelector('.talk-slideshow__arrow--next').addEventListener('click', function() { goTo(current + 1); });
+        })();
+        </script>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>

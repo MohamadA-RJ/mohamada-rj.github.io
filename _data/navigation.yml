@@ -20,7 +20,8 @@ main:
   - title: "Teaching"
     url: /teaching/    
     
-  # - title: "Portfolio"
+  - title: "R&D Archives"
+    url: /projects/
   #   url: /portfolio/
         
   - title: "Blog Posts"

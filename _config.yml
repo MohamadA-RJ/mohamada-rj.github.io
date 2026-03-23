@@ -241,6 +241,8 @@ collections:
     permalink: /:collection/:path/
   resources:
     output: false
+  projects:
+    output: false
 
 
 # These settings control how pages and collections are included in the site

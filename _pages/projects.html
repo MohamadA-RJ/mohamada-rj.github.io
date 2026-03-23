@@ -1,0 +1,17 @@
+---
+layout: archive
+title: "R&D Archives"
+permalink: /projects/
+author_profile: false
+---
+
+<p class="wordwrap">Not every project ends up in a journal — but some are too interesting not to share. A collection of explorations, rabbit holes, and half-finished ideas that were worth the detour.</p>
+
+{% include base_path %}
+
+<div class="projects-list">
+  {% assign sorted_projects = site.projects | sort: "date" | reverse %}
+  {% for post in sorted_projects %}
+    {% include archive-single-project.html %}
+  {% endfor %}
+</div>
