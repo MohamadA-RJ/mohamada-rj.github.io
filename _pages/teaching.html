@@ -1,12 +1,14 @@
 ---
 layout: archive
-title: "Teaching"
+title: "Teaching, Supervision, TA, and Tutoring"
 permalink: /teaching/
 author_profile: false
 ---
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+<div class="teaching-list">
+  {% for post in site.teaching reversed %}
+    {% include archive-single-teaching.html %}
+  {% endfor %}
+</div>

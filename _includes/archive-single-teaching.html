@@ -1,0 +1,88 @@
+{% include base_path %}
+
+{% comment %}Reset teaching_images each render to prevent bleed between cards{% endcomment %}
+{% assign teaching_images = nil %}
+{% if post.images %}
+  {% assign teaching_images = post.images %}
+{% elsif post.image and post.image != '' %}
+  {% assign teaching_images = post.image | split: '||' %}
+{% endif %}
+
+{% assign teach_id = post.url | slugify %}
+
+<div class="teaching-card">
+  <div class="teaching-card__body">
+
+    <div class="teaching-card__meta-row">
+      {% if post.type %}
+        <span class="teaching-type-badge">{{ post.type }}</span>
+      {% endif %}
+      {% if post.date %}
+        <span class="teaching-card__date">{{ post.date | date: "%Y" }}</span>
+      {% endif %}
+    </div>
+
+    <h3 class="teaching-card__title">{{ post.title }}</h3>
+
+    {% if post.venue or post.location %}
+      <p class="teaching-card__venue">
+        {% if post.venue %}<strong>{{ post.venue }}</strong>{% endif %}
+        {% if post.venue and post.location %} &mdash; {% endif %}
+        {% if post.location %}{{ post.location }}{% endif %}
+      </p>
+    {% endif %}
+
+    {% if post.excerpt %}
+      <p class="teaching-card__excerpt">{{ post.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+    {% endif %}
+
+    {% if post.courseurl %}
+      <div class="teaching-card__links">
+        <a href="{% if post.courseurl contains '://' %}{{ post.courseurl }}{% else %}{{ post.courseurl | prepend: '/' | replace: '//', '/' | prepend: base_path }}{% endif %}" class="resource-btn" target="_blank" rel="noopener">
+          <i class="fa fa-external-link-alt" aria-hidden="true"></i> Course Page
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {% if teaching_images and teaching_images.size > 0 %}
+    <div class="teaching-card__image">
+      {% if teaching_images.size == 1 %}
+        {% assign img = teaching_images[0] %}
+        <img src="{% if img contains '://' %}{{ img }}{% else %}{{ img | prepend: '/' | replace: '//', '/' | prepend: base_path }}{% endif %}" alt="{{ post.title }}" loading="lazy" />
+      {% else %}
+        <div class="talk-slideshow" id="teach-slideshow-{{ teach_id }}">
+          {% for img in teaching_images %}
+            <img src="{% if img contains '://' %}{{ img }}{% else %}{{ img | prepend: '/' | replace: '//', '/' | prepend: base_path }}{% endif %}" alt="{{ post.title }} – photo {{ forloop.index }}" loading="lazy" class="talk-slide{% if forloop.first %} active{% endif %}" />
+          {% endfor %}
+          <button class="talk-slideshow__arrow talk-slideshow__arrow--prev" aria-label="Previous">&#8249;</button>
+          <button class="talk-slideshow__arrow talk-slideshow__arrow--next" aria-label="Next">&#8250;</button>
+          <div class="talk-slideshow__dots">
+            {% for img in teaching_images %}
+              <span class="talk-slideshow__dot{% if forloop.first %} active{% endif %}"></span>
+            {% endfor %}
+          </div>
+        </div>
+        <script>
+        (function() {
+          var el = document.getElementById('teach-slideshow-{{ teach_id }}');
+          if (!el) return;
+          var slides = el.querySelectorAll('.talk-slide');
+          var dots = el.querySelectorAll('.talk-slideshow__dot');
+          var current = 0;
+          function goTo(n) {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = (n + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+          }
+          el.querySelector('.talk-slideshow__arrow--prev').addEventListener('click', function() { goTo(current - 1); });
+          el.querySelector('.talk-slideshow__arrow--next').addEventListener('click', function() { goTo(current + 1); });
+        })();
+        </script>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
