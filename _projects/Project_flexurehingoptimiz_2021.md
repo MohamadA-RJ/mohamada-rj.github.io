@@ -1,5 +1,5 @@
 ---
-title: "Flexure Hinge-Based Prosthetic Hand — Printed in One Go"
+title: "Flexure Hinge-Based Prosthetic Hand — Printed in One-go"
 collection: projects
 type: "Soft Robotics"
 date: 2021-01-01
