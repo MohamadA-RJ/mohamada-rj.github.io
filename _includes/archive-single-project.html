@@ -51,11 +51,23 @@
     <div class="project-card__image">
       {% if project_images.size == 1 %}
         {% assign img = project_images[0] %}
-        <img src="{% if img contains '://' %}{{ img }}{% else %}{{ img | prepend: '/' | replace: '//', '/' | prepend: base_path }}{% endif %}" alt="{{ post.title }}" loading="lazy" />
+        {% assign img_src = img %}
+        {% unless img contains '://' %}{% assign img_src = img | prepend: '/' | replace: '//', '/' | prepend: base_path %}{% endunless %}
+        {% if img contains '.mp4' %}
+        <video src="{{ img_src }}" autoplay muted loop playsinline style="width:100%;border-radius:6px;"></video>
+        {% else %}
+        <img src="{{ img_src }}" alt="{{ post.title }}" loading="lazy" />
+        {% endif %}
       {% else %}
         <div class="talk-slideshow" id="proj-slideshow-{{ proj_id }}">
           {% for img in project_images %}
-            <img src="{% if img contains '://' %}{{ img }}{% else %}{{ img | prepend: '/' | replace: '//', '/' | prepend: base_path }}{% endif %}" alt="{{ post.title }} – photo {{ forloop.index }}" loading="lazy" class="talk-slide{% if forloop.first %} active{% endif %}" />
+            {% assign img_src = img %}
+            {% unless img contains '://' %}{% assign img_src = img | prepend: '/' | replace: '//', '/' | prepend: base_path %}{% endunless %}
+            {% if img contains '.mp4' %}
+            <video src="{{ img_src }}" autoplay muted loop playsinline class="talk-slide{% if forloop.first %} active{% endif %}" style="width:100%;"></video>
+            {% else %}
+            <img src="{{ img_src }}" alt="{{ post.title }} – photo {{ forloop.index }}" loading="lazy" class="talk-slide{% if forloop.first %} active{% endif %}" />
+            {% endif %}
           {% endfor %}
           <button class="talk-slideshow__arrow talk-slideshow__arrow--prev" aria-label="Previous">&#8249;</button>
           <button class="talk-slideshow__arrow talk-slideshow__arrow--next" aria-label="Next">&#8250;</button>
