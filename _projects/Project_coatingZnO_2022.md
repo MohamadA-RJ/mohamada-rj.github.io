@@ -15,4 +15,7 @@ moreurl: "https://doi.org/10.1016/j.compscitech.2016.08.012"
 images:
   - "/images/Project_coatingZnO_2022_img_1.png"
   - "/images/Project_coatingZnO_2022_img_2.png"
+  - "/images/Project_coatingZnO_2022_img_3.png"
+  - "/images/Project_coatingZnO_2022_img_4.png"
+
 ---
