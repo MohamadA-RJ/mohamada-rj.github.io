@@ -2,6 +2,51 @@
    OPEN-ACCESS RESOURCES
    ========================================================================== */
 
+// CV page section heading dividers
+.page__content {
+  h2 {
+    border-bottom: 3px solid var(--global-border-color, #aaa) !important;
+    padding-bottom: 0.25em;
+    margin-bottom: 0.6em;
+  }
+}
+
+// CV publications compact spacing
+.cv-pubs {
+  > h3 {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+    font-size: 1em;
+    border-bottom: 1px solid var(--global-border-color, #e0e0e0);
+    padding-bottom: 0.2em;
+  }
+  ul {
+    margin-top: 0;
+    margin-bottom: 0.4em;
+  }
+  .list__item {
+    margin-bottom: 0;
+    padding-right: 0;
+  }
+  .archive__item {
+    margin-bottom: 0;
+  }
+  .archive__item-title {
+    margin-top: 0.2em;
+    margin-bottom: 0;
+    font-size: 0.9em;
+    border-bottom: none !important;
+  }
+  .archive__item-excerpt {
+    margin-top: 0.1em;
+    margin-bottom: 0.3em;
+    font-size: 0.85em;
+  }
+  li {
+    margin-bottom: 0.4em;
+  }
+}
+
 .resources-list {
   margin-top: 1.5em;
 }
