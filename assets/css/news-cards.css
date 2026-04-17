@@ -3,7 +3,6 @@
   margin-top: 0rem;
   margin-bottom: 0rem;
   padding: 0;
-  overflow: hidden;        /* clip the scrolling track */
   position: relative;
 }
 
@@ -28,9 +27,15 @@
 }
 */
 
-@keyframes news-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }  /* move exactly one copy-width */
+.latest-news-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.latest-news-viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .news-scroll-wrapper {
@@ -38,13 +43,47 @@
   gap: 1.5rem;
   padding: 1rem 0;
   margin-bottom: 1rem;
-  width: max-content;            /* shrink-wraps all cards */
-  animation: news-scroll 25s linear infinite;
+  width: max-content;
 }
 
-/* Pause on hover over any card or the wrapper itself */
-.latest-news-container:hover .news-scroll-wrapper {
-  animation-play-state: paused;
+.news-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.news-nav:hover {
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.news-nav:focus-visible {
+  outline: 2px solid #00A6D6;
+  outline-offset: 2px;
+}
+
+.news-nav-prev {
+  left: 0.2rem;
+}
+
+.news-nav-next {
+  right: 0.2rem;
 }
 
 .news-card {
@@ -132,6 +171,11 @@
   .news-card {
     flex: 0 0 280px;
   }
+
+  .news-nav {
+    width: 2rem;
+    height: 2rem;
+  }
   
   .news-card-title {
     font-size: 1rem;
@@ -141,6 +185,10 @@
 @media (max-width: 480px) {
   .news-card {
     flex: 0 0 260px;
+  }
+
+  .news-nav {
+    display: none;
   }
   
   .news-card-content {
