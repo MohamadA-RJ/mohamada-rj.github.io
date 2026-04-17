@@ -1,0 +1,17 @@
+---
+layout: archive
+title: "News"
+permalink: /news/
+author_profile: false
+---
+
+<p class="wordwrap">Updates about publications, media features, awards, and research highlights.</p>
+
+{% include base_path %}
+
+<div class="news-archive-list">
+  {% assign sorted_news = site.news | sort: "date" | reverse %}
+  {% for post in sorted_news %}
+    {% include archive-single-news.html %}
+  {% endfor %}
+</div>

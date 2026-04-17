@@ -19,7 +19,7 @@ Prior to joining TU Delft, I worked as a MS researcher in the <a href="http://md
 
 <br>
 
-# Latest News
+# Latest News &nbsp;<small><a href="/news/" style="font-size:0.7rem; font-weight:normal; color:#00A6D6;">View all &#8594;</a></small>
 ------
 <div class="latest-news-container">
   <button class="news-nav news-nav-prev" id="newsPrev" type="button" aria-label="Previous news">&#10094;</button>

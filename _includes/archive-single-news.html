@@ -1,0 +1,49 @@
+{% include base_path %}
+
+{% comment %}Support both 'images' (list) and legacy 'image' (single string){% endcomment %}
+{% assign news_image = nil %}
+{% if post.images %}
+  {% assign news_image = post.images[0] %}
+{% elsif post.image and post.image != '' %}
+  {% assign news_image = post.image %}
+{% endif %}
+
+<div class="news-archive-card">
+  <div class="news-archive-card__body">
+
+    <div class="news-archive-card__meta-row">
+      {% if post.category %}
+        <span class="news-type-badge">{{ post.category }}</span>
+      {% endif %}
+      {% if post.date %}
+        <span class="news-archive-card__date">{{ post.date | date: "%B %d, %Y" }}</span>
+      {% endif %}
+    </div>
+
+    <h3 class="news-archive-card__title">
+      <a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a>
+    </h3>
+
+    {% if post.excerpt %}
+      <p class="news-archive-card__excerpt">{{ post.excerpt | strip_html | truncatewords: 45 }}</p>
+    {% endif %}
+
+    <div class="news-archive-card__links">
+      <a href="{{ base_path }}{{ post.url }}" class="resource-btn">
+        <i class="fa fa-newspaper" aria-hidden="true"></i> Read More
+      </a>
+    </div>
+
+  </div>
+
+  {% if news_image %}
+    <div class="news-archive-card__image">
+      <a href="{{ base_path }}{{ post.url }}">
+        <img
+          src="{% if news_image contains '://' %}{{ news_image }}{% else %}{{ news_image | prepend: '/' | replace: '//', '/' | prepend: base_path }}{% endif %}"
+          alt="{{ post.title }}"
+          loading="lazy" />
+      </a>
+    </div>
+  {% endif %}
+</div>
