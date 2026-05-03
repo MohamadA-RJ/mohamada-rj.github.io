@@ -13,7 +13,7 @@
     scroller.style.animation = 'none';
 
     var pos       = 0;
-    var autoSpd   = 0.5;
+    var autoSpd   = 1.2;
     var paused    = false;
     var sliding   = false;
     var slideFrom = 0;
